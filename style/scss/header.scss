@@ -1,0 +1,84 @@
+.header{
+    position: absolute;
+    top: 80px;
+    @media(min-width: $md2+px){
+        top: 130px;
+    }
+    left: 0;
+    width: 100%;
+    height: 60px;
+
+    &__inner{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba($color: #fff, $alpha: .5);
+        min-height: 60px;
+        @media(min-width: $md3+px){
+            padding: 0px 50px;
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 5px;
+            background-color: $browncolor;
+            border-bottom: 2px solid #715b2d;
+            top: 0;
+            left: 0;
+            box-shadow: 0px 5px 15px rgba($color: rgb(1, 0, 41), $alpha: .6);
+        }
+    }
+
+    &__nav{
+        display: none;
+        @media(min-width: $md1+px){
+            display: flex;
+        }
+        padding: 4px 0px 0px 0px;
+        gap: 45px;
+        &--item{
+            font-family: $font-family-MyriadProRegular;
+            @include adaptiv-value('font-size',20,17,1);
+            text-transform: uppercase;
+            transition: all .3s ease;
+
+            @media(any-hover:hover){ 
+                &:hover{
+                    color: #000;
+                }
+            }
+
+        }
+    }
+
+    &__slider{
+        display: block;
+        min-width: 0;
+        @media(min-width: $md1+px){
+            display: none;
+        }
+
+        &--item{
+            display: flex;
+            justify-content: center;
+            @media(min-width: $md2+px){
+                color: rgb(158, 158, 158);
+            }
+            font-family: $font-family-MyriadProRegular;
+            @include adaptiv-value('font-size',20,17,1);
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: all .3s ease;
+
+            @media(any-hover:hover){ 
+                &:hover{
+                    color: #000;
+                }
+            }
+        }
+
+    }
+}
