@@ -86,8 +86,11 @@ body{
     display: flex;
     flex-direction: column;
     background-image: url(../../img/background/background-element-body.png);
-    background-position: top left;
-    background-repeat: no-repeat
+    background-position: top;
+    background-repeat: no-repeat;
+    @media(min-width: $md2+px){
+        background-position: top left;
+    }
 }
 
 // Подключение остальных стилей //

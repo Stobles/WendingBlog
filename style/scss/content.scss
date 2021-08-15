@@ -71,10 +71,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 10px;
             align-self: center;
             @include adaptiv-value('font-size',54,30,1);
             margin: 8% 0 0 0px;
+            @media(min-width: $md2+px){
+                gap: 20px;
+            }
         }
     }
 
@@ -134,15 +137,23 @@
 .ourstory{
     position: relative;
     &__background{
+        display: none;
         position: absolute;
         right: 0;
         top: 50%;
         transform: translateY(-50%);
 
+        @media(max-width: $md1+px){
+            left: 0;
+        }
+
         &--second{
             bottom: 0;
             right: -8px;
             z-index: -1;
+        }
+        @media(min-width: $md2+px){
+            display: block;
         }
     }
 
@@ -156,23 +167,36 @@
     &__body{
         display: flex;
         gap: 40px;
-        @media(min-width: $md2+px){
-            
+        @media(max-width: $md2+px){
+            flex-direction: column;
         }
-        align-items: flex-end;
+        align-items: center;
+        @media(min-width: $md2+px){
+            align-items: flex-end;
+        }
     }
 
     &__img{
         display: flex;
         border-radius: 50%;
-        flex: 0 1 560px;
-        padding: 0px 0px 560px/1030px *100% 0px;
+        @media(min-width: $md2+px){
+            flex: 0 1 560px;
+        }
+        padding: 0px 0px 560px /1030px * 100% 0px;
+        @media(max-width: $md2+px){
+            width: 560px / 1030px * 100%;
+        }
+
+        @media(max-width: $mp1+px){
+            padding: 0px 0px 830px /1030px * 100% 0px;
+            width: 830px / 1030px * 100%;
+        }
     }
 
     &__author{
         display: flex;
         font-family: $font-family-OldStandardRegular;
-        font-size: 65px;
+        @include adaptiv-value('font-size',65,35,1);
         justify-content: flex-end;
     }
 
@@ -180,6 +204,7 @@
         flex: 1;
         &--title{
             font-family: $font-family-OldStandardBold;
+            @include adaptiv-value('font-size',60,40,1);
             @media(min-width: $md2+px){
                 @include adaptiv-value('font-size',60,20,1);
             }
@@ -197,14 +222,16 @@
 
         &--text{
             p{
-                font-size: 14px;
+                @include adaptiv-value('font-size',14,12,1);
                 @media(min-width: $md2+px){
-                    @include adaptiv-value('font-size',14,12,1);
+                    line-height: 27px;
+                    margin-block-start: 40px;
+                    margin-block-end: 40px;
                 }
                 font-family: $font-family-MyriadProRegular;
-                line-height: 27px;
-                margin-block-start: 40px;
-                margin-block-end: 40px;
+                line-height: 23px;
+                margin-block-start: 20px;
+                margin-block-end: 20px;
             }
         }
     }
@@ -216,10 +243,16 @@
         position: absolute;
         right: 0;
         top: 50%;
-        transform: translateY(-50%);
+        @media(min-width: $md2+px){
+            transform: translateY(-50%);
+        }
         z-index: -1;
         @media(min-width: $md1+px){
             z-index: 5;
+        }
+
+        @media(max-width: $md3+px){
+            right: -25%;
         }
     }
 
@@ -233,18 +266,25 @@
         gap: 107px;
         padding: 130px 0px 80px 0px;
         z-index: 1;
+        @media(max-width: $md2+px){
+            flex-direction: column;
+        }
     }
 
     &__address{
         flex: 0 1 425px;
-        text-align: right;
+        text-align: center;
+        @media(min-width: $md2+px){
+            text-align: right;
+        }
         margin: 10px 0px 0px 0px;
         &--title{
-            font-size: 60px;
+            @include adaptiv-value('font-size',60,40,1);
             margin: 0px 0px 90px 0px;
         }
 
         &--item{
+            text-align: center;
             &--title{
                 font-family: $font-family-OldStandardRegular;
                 text-transform: capitalize;
@@ -266,9 +306,11 @@
             }
 
             &--text{
-                font-size: $font-family-MyriadProRegular;
+                font-family: $font-family-MyriadProRegular;
                 font-size: 16px;
                 line-height: 27px;
+                max-width: 600px;
+                margin: 0 auto;
                 
             }
 
@@ -289,13 +331,20 @@
 
     &__imgs{
         display: flex;
-        flex-direction: column;
         flex: 1;
         gap: 15px;
         justify-content: center;
+        @media(min-width: $md2+px){
+            flex-direction: column;
+        }
+
+        @media(max-width: $mp1+px){
+            flex-direction: column;
+        }
     }
 
     &__img{
+        flex: 1;
         padding: 0px 0px 365px / 568px * 100% 0px;
     }
 }
@@ -304,31 +353,60 @@
 .menu{
     &__title{
         text-align: center;
-        margin: 0px 0px 30px 0px;
+        margin: 0px auto 30px auto;
+        @media(max-width: $md4+px){
+            max-width: 290px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 
     &__container{
         max-width: 1275px;
-        margin: 0;
+        @media(min-width: $md1+px){
+            margin: 0;
+        }
         padding: 0;
     }
 
     &__inner{
         display: flex;
-        gap: 130px;
+        @media(max-width: $md1+px){
+            flex-direction: column;
+            align-items: center;
+        }
+        gap: 50px;
+        @media(min-width: $md1+px){
+            gap: 130px;
+        }
         padding: 0px 0px 50px 0px;
     }
 
     &__img{
         position: relative;
-        flex: 0 1 587px;
-        align-self: flex-start;
+        @media(min-width: $md1+px){
+            flex: 0 1 587px;
+            align-self: flex-start;
+        }
+        @media(max-width: $md1+px){
+            width: 560px / 1030px * 100%;
+        }
+
+        @media(max-width: $md3+px){
+            width: 900px / 1030px * 100%;
+        }
 
         &--cake{
             padding: 0px 0px 570px/587px * 100% 0px;
         }
 
         &--plant{
+            display: none;
+            @media(min-width: $md1+px){
+                display: block;
+            }
             position: absolute;
             right: 0;
             transform: translateX(37%);
@@ -343,24 +421,37 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 555px;
+            max-width: 650px;
+            margin: 0px 10px 25px 10px;
+            @media(min-width: $md1+px){
+                max-width: 555px;
+            }
 
-            &:not(:last-child){
-                margin:0px 0px 25px 0px;
+            &:last-child{
+                margin: 0px 10px 0px 10px;
             }
 
             &--title{
+                position: relative;
+                display: flex;
+                flex-direction: column;
                 font-size: 80px;
+                width: 100%;
                 text-align: center;
                 font-family: $font-family-MrsSaintDelafieldRegular;
                 &::after{
                     content: '';
                     display: block;
-                    width: 535px;
+                    position: absolute;
+                    width: 100%;
+                    max-width: 535px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: 5px;
                     height: 4px;
                     background: linear-gradient(180deg, rgba(157,132,67,1) 0%, rgba(170,137,72,1) 100%);
                     border-bottom: 1px solid #927338;
-                    margin: -10px 0px 0px 0px;
+                    
                 }
             }
 
@@ -393,14 +484,20 @@
     min-height: 890px;
 
     &__background{
+        display: none;
         position: absolute;
         left: 0;
         top: 0;
+        @media(min-width: $md1+px){
+            display: block;
+        }
     }
 
     &__container{
-        display: inline-block;
-        margin: 0px 0px 0px 400px/1440px * 100%;
+        @media(min-width: $md1+px){
+            display: inline-block;
+            margin: 0px 0px 0px 400px/1440px * 100%;
+        }
     }
 
 
@@ -413,7 +510,7 @@
 
     &__title{
         padding: 0px 0px 20px 0px;
-        font-size: 75px;
+        @include adaptiv-value('font-size',75,40,1);
         text-align: center;
     }
 
@@ -421,9 +518,10 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
-        width: 485px;
+        max-width: 485px;
+        width: 100%;
         &--title{
-            font-size: 24px;
+            @include adaptiv-value('font-size',24,20,1); 
             text-transform: capitalize;
             text-align: center;
         }
@@ -439,7 +537,7 @@
 
             &::placeholder{
                 font-family: $font-family-MyriadProRegular;
-                font-size: 22px;
+                @include adaptiv-value('font-size',22,18,1);
                 text-transform: uppercase;
                 align-self: center;
             }
@@ -453,9 +551,13 @@
     position: relative;
 
     &__background{
+        display: none;
         position: absolute;
         right: 0;
         bottom: 0;
+        @media(min-width: $md2+px){
+            display: block;
+        }
 
         &--second{
             right: 10px;
@@ -465,25 +567,33 @@
 
     &__container{
         max-width: 1010px;
-        margin: 0px 0px 0px 80px /1440px *100%;
+        @media(min-width: $md2+px){
+            margin: 0px 0px 0px 80px /1440px *100%;
+        }
     }
 
     &__title{
         display: flex;
         align-items: center;
-        font-size: 60px;
+        @include adaptiv-value('font-size',60,30,1);
         padding: 40px 0px;
         span{
             display: flex;
             align-items: center;
             letter-spacing: 12px;
-            margin: 0px 0px 0px 55px;
+            margin: 0px 0px 0px 30px;
+            @media(min-width: $md3+px){
+                margin: 0px 0px 0px 55px;
+            }
         }
     }
 
     &__imgs{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
+        @media(max-width: $md4+px){
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+        }
         gap: 10px;
     }
 
@@ -508,7 +618,7 @@
             padding: 0px 15px;
 
             &--title{
-                font-size: 26px;
+                @include adaptiv-value('font-size',26,20,1);
             }
 
         }
@@ -517,7 +627,7 @@
             &--btn{
                 width: 100%;
                 border: 4px solid #bea373;
-                font-size: 26px;
+                @include adaptiv-value('font-size',26,20,1);
                 background-color: transparent;
                 padding: 5px 0px;
                 color: #999999;
@@ -540,16 +650,29 @@
 .memories{
     position: relative;
     &__background{
+        display: none;
         position: absolute;
         right: 0;
         bottom: 0;
         z-index: 5;
+        @media(max-width: $md1+px){
+            z-index: -1;
+        }
+
+        @media(min-width: $mp1+px){
+            display: block;
+        }
     }
 
     &__inner{
         display: flex;
         justify-content: space-between;
         padding: 130px 0px 50px 0px;
+        gap: 30px;
+        @media(max-width: $md2+px){
+            flex-direction: column-reverse;
+            align-items: center;
+        }
     }
 
     &__quote{
@@ -557,14 +680,14 @@
         flex-direction: column;
         align-items: flex-end;
         justify-content: space-between;
-        max-width: 550px;
+        flex: 0 1 560px;
 
         &--body{
             align-items: flex-end;
         }
 
         &--title{
-            font-size: 60px;
+            @include adaptiv-value('font-size',60,40,1);
             text-align: right;
             padding: 0px 0px 30px 0px;
         }
@@ -573,14 +696,14 @@
             font-family: $font-family-MyriadProRegular;
             position: relative;
             text-align: justify;
-            font-size: 26px;
+            @include adaptiv-value('font-size',26,20,1);
             span{
                 font-size: 70px;
             }
         }
 
         &--author{
-            font-size: 50px;
+            @include adaptiv-value('font-size',50,30,1);
             margin: 0px 80px 0px 0px;
 
             &::after{
@@ -596,9 +719,19 @@
     }
 
     &__img{
-        flex: 0 1 650px;
+        @media(min-width: $md2+px){
+            flex: 0 1 650px / 1290px * 100%;
+        }
+        @media(max-width: $md2+px){
+            width: 650px / 1290px * 100%;
+        }
+
+        @media(max-width: $md3+px){
+            width: 1000px / 1290px * 100%;
+            padding: 0px 0px 1000px/1290px * 100% 0px;
+        }
         border-radius: 50%;
-        padding: 0px 0px 650px/1320px * 100% 0px;
+        padding: 0px 0px 650px/1290px * 100% 0px;
         z-index: 1;
     }
 }
