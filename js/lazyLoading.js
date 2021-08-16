@@ -1,7 +1,6 @@
 "use strict"
 
 const lazyImages = document.querySelectorAll('[data-src]')
-const loadMapBlock = document.querySelector('[data-map]')
 const windowH = document.documentElement.clientHeight
 
 let lazyImagesPositions = []
@@ -23,9 +22,6 @@ window.addEventListener('resize', lazyScroll)
 function lazyScroll() {
     if(document.querySelectorAll('[data-src]').length > 0){
         lazyScrollCheck()
-    }
-    if(!loadMapBlock.classList.contains('_loaded')){
-        getMap()
     }
 }
 
